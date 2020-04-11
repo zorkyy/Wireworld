@@ -2,8 +2,8 @@
 <launch4jConfig>
   <dontWrapJar>false</dontWrapJar>
   <headerType>gui</headerType>
-  <jar>/Users/zorkyy/www/rnd/_java/Wireworld/target/artifacts/Wireworld_jar/Wireworld.jar</jar>
-  <outfile>/Users/zorkyy/www/rnd/_java/Wireworld/target/artifacts/Wireworld_jar/app.exe</outfile>
+  <jar>target/Wireworld.jar</jar>
+  <outfile>target/Wireworld.exe</outfile>
   <errTitle></errTitle>
   <cmdLine></cmdLine>
   <chdir>.</chdir>
