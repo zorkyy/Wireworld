@@ -6,7 +6,6 @@ import tk.unnikked.wireworld.mvc.view.WorldGrid;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionListener;
 
 /**
  * Created by nicola on 29/08/14.
