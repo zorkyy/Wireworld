@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>zorkyy.demo.main</groupId>
+    <artifactId>Wireworld</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <name>Wireworld</name>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.8.2</version>
+        </dependency>
+    </dependencies>
+
+            <build>
+                <sourceDirectory>src/</sourceDirectory>
+
+                <finalName>${project.artifactId}</finalName>
+                <plugins>
+                    <plugin>
+                    <!-- Build an executable JAR -->
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-jar-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <configuration>
+                            <archive>
+                            <manifest>
+                                <addClasspath>true</addClasspath>
+                                <mainClass>tk.unnikked.wireworld.Main</mainClass>
+                            </manifest>
+                            </archive>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>com.akathist.maven.plugins.launch4j</groupId>
+                        <artifactId>launch4j-maven-plugin</artifactId>
+                        <version>1.7.22</version>
+                        <executions>
+                            <execution>
+                                <id>l4j-clui</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>launch4j</goal>
+                                </goals>
+                                <configuration>
+                                    <headerType>gui</headerType>
+                                    <jar>${project.build.directory}/${project.artifactId}.jar</jar>
+                                    <outfile>${project.build.directory}/${project.artifactId}.exe</outfile>
+                                    <downloadUrl>http://java.com/download</downloadUrl>
+                                    <classPath>
+                                        <mainClass>tk.unnikked.wireworld.Main</mainClass>
+                                        <preCp>anything</preCp>
+                                    </classPath>
+                                    <jre>
+                                        <minVersion>1.8.0</minVersion>
+                                        <jdkPreference>preferJre</jdkPreference>
+                                    </jre>
+                                    <versionInfo>
+                                        <fileVersion>1.0.0.0</fileVersion>
+                                        <txtFileVersion>1.0.0.0</txtFileVersion>
+                                        <fileDescription>Wireworld Game</fileDescription>
+                                        <copyright>Dmytro Prokopenko</copyright>
+                                        <companyName>Dmytro Prokopenko</companyName>
+                                        <productVersion>1.0.0.0</productVersion>
+                                        <txtProductVersion>1.0.0.0</txtProductVersion>
+                                        <productName>${project.artifactId}</productName>
+                                        <internalName>${project.artifactId}</internalName>
+                                        <originalFilename>${project.artifactId}.exe</originalFilename>
+                                    </versionInfo>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>com.agiliumlabs.osxappbundle</groupId>
+                        <artifactId>osxappbundle-maven-plugin</artifactId>
+                        <version>1.0.1</version>
+                        <configuration>
+                            <mainClass>tk.unnikked.wireworld.Main</mainClass>
+                            <diskImageFile>${project.build.directory}/${project.artifactId}.dmg</diskImageFile>
+                            <zipFile>${project.build.directory}/${project.artifactId}.dmg.zip</zipFile>
+                            <bundleName>Wireworld</bundleName>
+                            <version>1.0.0.0</version>
+                            <createApplicationSymbolicLink>true</createApplicationSymbolicLink>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>bundle</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+
+</project>
